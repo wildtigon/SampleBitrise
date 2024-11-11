@@ -13,14 +13,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### store_prod
-
-```sh
-[bundle exec] fastlane store_prod
-```
-
-
-
 ### store_dev
 
 ```sh
