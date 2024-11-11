@@ -1,23 +1,45 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+lane :store_prod do
+  build_app(
+    scheme: "Gooo",
+    output_name: "Gooo.ipa", 
+    export_method: "app-store",
+    export_options: {
+      silent: true,
+      provisioningProfiles: { 
+        "com.gooo-group.gooo" => "Goo Pro-Store",
+      }
+    }
+  )
+end
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+lane :store_dev do
+  build_app(
+    scheme: "Gooo-Dev",
+    output_name: "Gooo-Dev.ipa", 
+    export_method: "app-store",
+    export_options: {
+      silent: true,
+      provisioningProfiles: { 
+        "com.gooo-group.gooo.dev" => "Goo_DevStore",
+      }
+    }
+  )
+end
 
-default_platform(:ios)
+lane :upload_sentry do
+  sentry_upload_dif(
+    auth_token: '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',
+    org_slug: 'freelance-2m',
+    project_slug: 'gooo',
+    include_sources: true
+  )
+end
 
-platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
-  end
+lane :upload_sentry_dev do
+  sentry_upload_dif(
+    auth_token: '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',
+    org_slug: 'freelance-2m',
+    project_slug: 'gooo-dev',
+    include_sources: true
+  )
 end

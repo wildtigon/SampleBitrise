@@ -1,0 +1,9 @@
+include_bitcode(false)
+include_symbols(true)
+export_options({
+    method: "app-store",
+    provisioningProfiles: {
+        "com.gooo-group.gooo" => "Goo Pro-Store",
+        "com.gooo-group.gooo.dev" => "Goo_DevStore",
+    }
+})
